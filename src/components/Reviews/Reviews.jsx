@@ -1,10 +1,11 @@
+import { ItemBox } from 'components/CastItem/CastItem.styled';
 import { ReviewsItem } from 'components/ReviewsItem/ReviewsItem';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { apiMovieReviews } from 'services/apiMovies';
 
-export const Reviews = () => {
+export default function Reviews() {
   const [reviews, setReviews] = useState([]);
   const { movieId } = useParams();
 
@@ -20,10 +21,10 @@ export const Reviews = () => {
     return <p>We don't have any reviews for this movie</p>;
   }
   return (
-    <ul>
+    <ItemBox>
       {reviews.map(({ id, author, content }) => (
         <ReviewsItem key={id} author={author} content={content} />
       ))}
-    </ul>
+    </ItemBox>
   );
-};
+}

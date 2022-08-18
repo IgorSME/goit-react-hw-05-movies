@@ -1,3 +1,7 @@
+import { CardDescription, Wrap } from './MovieCard.styled';
+import defaultImage from '../../images/no-poster.png';
+import PropTypes from 'prop-types';
+
 export const MovieCard = ({
   title,
   poster_path,
@@ -5,20 +9,30 @@ export const MovieCard = ({
   vote_average,
   genres,
 }) => {
-  const imageUrl =
-    poster_path && `https://image.tmdb.org/t/p/w300/${poster_path}`;
+  const imageUrl = poster_path
+    ? `https://image.tmdb.org/t/p/w300/${poster_path}`
+    : `${defaultImage}`;
   const genresItem = genres.map(item => item.name).join(' ');
+
   return (
-    <div>
+    <Wrap>
       <img src={imageUrl} alt={title} />
-      <div>
+      <CardDescription>
         <h2>{title}</h2>
         <p>User score {Math.ceil(vote_average * 10)}%</p>
         <h3>Overview</h3>
         <p>{overview}</p>
         <h4>Genres</h4>
         <p>{genresItem}</p>
-      </div>
-    </div>
+      </CardDescription>
+    </Wrap>
   );
+};
+
+MovieCard.propTypes = {
+  title: PropTypes.string.isRequired,
+  poster_path: PropTypes.string.isRequired,
+  overview: PropTypes.string.isRequired,
+  vote_average: PropTypes.number.isRequired,
+  genres: PropTypes.string.isRequired,
 };

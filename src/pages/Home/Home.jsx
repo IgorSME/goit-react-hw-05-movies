@@ -5,7 +5,7 @@ import { apiMovieTrennding } from 'services/apiMovies';
 import { MovieItem } from 'components/MovieItem/MovieItem';
 import { Container } from './Home.styled';
 
-export const Home = () => {
+export default function Home() {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
@@ -18,13 +18,15 @@ export const Home = () => {
     fetch();
   }, []);
 
+  if (movies.length === 0) {
+    return;
+  }
+
   return (
-    movies && (
-      <Container>
-        {movies.map(({ id, title }) => (
-          <MovieItem key={id} id={id} title={title}></MovieItem>
-        ))}
-      </Container>
-    )
+    <Container>
+      {movies.map(({ id, title }) => (
+        <MovieItem key={id} id={id} title={title}></MovieItem>
+      ))}
+    </Container>
   );
-};
+}

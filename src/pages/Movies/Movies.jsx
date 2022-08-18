@@ -6,7 +6,7 @@ import { useSearchParams } from 'react-router-dom';
 import { apiMovieSearch } from 'services/apiMovies';
 import { MovieItem } from '../../components/MovieItem/MovieItem';
 
-export const Movies = () => {
+export default function Movies() {
   const [movie, setMovie] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -30,15 +30,17 @@ export const Movies = () => {
   };
 
   return (
-    <Container>
+    <>
       <SearchForm onSubmit={onSubmit} />
-      {movie.length === 0 ? (
-        <p> Enter movie name</p>
-      ) : (
-        movie.map(({ id, title }) => (
-          <MovieItem key={id} id={id} title={title}></MovieItem>
-        ))
-      )}
-    </Container>
+      <Container>
+        {movie.length === 0 ? (
+          <p> Enter movie name</p>
+        ) : (
+          movie.map(({ id, title }) => (
+            <MovieItem key={id} id={id} title={title}></MovieItem>
+          ))
+        )}
+      </Container>
+    </>
   );
-};
+}

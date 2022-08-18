@@ -1,17 +1,17 @@
-import { Link } from 'react-router-dom';
+import { AddInfo, StyledLink, Title } from './AdditionalInfo.styled';
 
 export const AdditionalInfo = () => {
   return (
-    <div>
-      <p>Additional information</p>
+    <AddInfo>
+      <Title>Additional information</Title>
       <ul>
         <li>
-          <Link to={'cast'}>Cast</Link>
+          <StyledLink to={'cast'}>Cast</StyledLink>
         </li>
         <li>
-          <Link to={'reviews'}>Reviews</Link>
+          <StyledLink to={'reviews'}>Reviews</StyledLink>
         </li>
       </ul>
-    </div>
+    </AddInfo>
   );
 };

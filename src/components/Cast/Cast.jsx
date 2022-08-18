@@ -3,8 +3,9 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { apiMovieCast } from 'services/apiMovies';
 import { CastItem } from 'components/CastItem/CastItem';
+import { ItemBox } from 'components/CastItem/CastItem.styled';
 
-export const Cast = () => {
+export default function Cast() {
   const [cast, setCast] = useState([]);
   const { movieId } = useParams();
 
@@ -23,7 +24,7 @@ export const Cast = () => {
   }
 
   return (
-    <ul>
+    <ItemBox>
       {cast.map(({ id, name, character, profile_path }) => (
         <CastItem
           key={id}
@@ -33,6 +34,6 @@ export const Cast = () => {
           profile_path={profile_path}
         />
       ))}
-    </ul>
+    </ItemBox>
   );
-};
+}
