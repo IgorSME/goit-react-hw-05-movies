@@ -18,7 +18,7 @@ const Reviews = lazy(() =>
   import('./Reviews/Reviews' /*webpackChunkName: "reviews"*/)
 );
 const NotFound = lazy(() =>
-  import('pages/NotFound/NotFoumd' /*webpackChunkName: "not-found"*/)
+  import('../pages/NotFound/NotFoumd' /*webpackChunkName: "not-found"*/)
 );
 
 export const App = () => {
