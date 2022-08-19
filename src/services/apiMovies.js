@@ -31,6 +31,6 @@ export async function apiMovieCast(id) {
 export async function apiMovieReviews(id) {
   const url = `${BASE_URL}/movie/${id}/reviews?api_key=${KEY}&language=en-US&page=1`;
   const response = await axios.get(url);
-  console.log(response);
+  // console.log(response);
   return response;
 }

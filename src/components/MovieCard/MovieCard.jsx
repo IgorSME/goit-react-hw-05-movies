@@ -34,5 +34,5 @@ MovieCard.propTypes = {
   poster_path: PropTypes.string.isRequired,
   overview: PropTypes.string.isRequired,
   vote_average: PropTypes.number.isRequired,
-  genres: PropTypes.string.isRequired,
+  genres: PropTypes.arrayOf(PropTypes.object),
 };

@@ -1,6 +1,4 @@
-import { useEffect } from 'react';
-import { useState } from 'react';
-
+import { useEffect, useState } from 'react';
 import { apiMovieTrennding } from 'services/apiMovies';
 import { MovieItem } from 'components/MovieItem/MovieItem';
 import { Container } from './Home.styled';
