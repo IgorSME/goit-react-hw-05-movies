@@ -1,15 +1,15 @@
 import { AdditionalInfo } from 'components/AdditionalInfo/AdditionalInfo';
+import { BackButton } from 'components/BackButton/BackButton';
 import { MovieCard } from 'components/MovieCard/MovieCard';
 import { Suspense, useEffect } from 'react';
 import { useState } from 'react';
-import { Outlet, useLocation, useParams } from 'react-router-dom';
+import { Outlet, useParams } from 'react-router-dom';
 import { apiMovieSearchById } from 'services/apiMovies';
-import { StyledLink } from './MovieDetails.styled';
 
 export default function MovieDetails() {
   const [movieItem, setMovieItem] = useState(null);
-  const location = useLocation();
   const { movieId } = useParams();
+
   useEffect(() => {
     async function fetch() {
       try {
@@ -23,10 +23,10 @@ export default function MovieDetails() {
     return;
   }
   const { title, poster_path, overview, vote_average, genres } = movieItem;
-  const backLinkHref = location.state?.from ?? '/';
+
   return (
     <>
-      <StyledLink to={backLinkHref}>Go back</StyledLink>
+      <BackButton />
       <MovieCard
         title={title}
         poster_path={poster_path}
